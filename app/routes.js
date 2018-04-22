@@ -10,6 +10,9 @@ app.config(function($routeProvider){
 	.when('/login',{
 		templateUrl : 'app/view/login/login.html'
 	})
+	.when('/reg',{
+		templateUrl : 'app/view/login/registrasi.html'
+	})
 	.when('/career',{
 		templateUrl : 'app/view/career/career.html'
 	})

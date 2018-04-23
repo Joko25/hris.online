@@ -3,10 +3,10 @@
             </div>
             <div class="container">
                 <div class="content-center brand">
-                    <img class="n-logo" src="./assets/img/logo_AI.png" alt="">
-                    <h1 class="h1-seo">PT. Askara Internal</h1>
-                    <h3>This is our great company.</h3>
-	                    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="btn btn-danger btn-raised btn-lg">
+                    <img class="n-logo" src="{{logo}}" alt="">
+                    <h1 class="h1-seo">{{dash.title}}</h1>
+                    <h3>{{dash.subtitle}}</h3>
+	                    <a href="{{dash.video}}" target="_blank" class="btn btn-danger btn-raised btn-lg">
 	                        <i class="fa fa-play"></i> Watch video
 	                    </a>
                 </div>
@@ -17,36 +17,18 @@
                 <div class="row">
                     <div class="col-md-8 ml-auto mr-auto">
                         <h2 class="title">About</h2>
-                        <h5 class="description">This is the paragraph where you can write more details about your product. Keep you user engaged by providing meaningful information. Remember that by this time, the user is curious, otherwise he wouldn&apos;t scroll to get here. Add a button if you want the user to see more.</h5>
+                        <h5 class="description">{{dash.about}}</h5>
                     </div>
                 </div>
                 <div class="features">
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-4" ng-repeat="kat in dash.category">
                             <div class="info">
-                                <div class="icon icon-info">
-                                    <i class="material-icons">RM</i>
+                                <div class="icon {{kat.icon}}">
+                                    <i class="material-icons">{{kat.abbreviation}}</i>
                                 </div>
-                                <h4 class="info-title">Row Material</h4>
-                                <p>Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="info">
-                                <div class="icon icon-success">
-                                    <i class="material-icons">NRM</i>
-                                </div>
-                                <h4 class="info-title">Non Row Material</h4>
-                                <p>Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="info">
-                                <div class="icon icon-danger">
-                                    <i class="material-icons">TS</i>
-                                </div>
-                                <h4 class="info-title">Technical Support</h4>
-                                <p>Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough.</p>
+                                <h4 class="info-title">{{kat.category}}</h4>
+                                <p>{{kat.ket}}</p>
                             </div>
                         </div>
                     </div>

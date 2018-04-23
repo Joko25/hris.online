@@ -1,36 +1,19 @@
-    <footer class="footer" data-background-color="black">
-            <div class="container">
-                <nav>
-                    <ul>
-                        <li>
-                            <a href="#">
-                                Creative Tim
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                About Us
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Blog
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                MIT License
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-                <div class="copyright">
-                    &copy;
-                    <script>
-                        document.write(new Date().getFullYear())
-                    </script>, Designed by
-                    <a href="#" target="_blank">Ngongop.dev</a>. Coded by
-                    <a href="#" target="_blank">Ngongop.dev</a>.
-                </div>
-            </div>
-        </footer>
+<footer class="footer" data-background-color="black" ng-controller="mainControllers as footer">
+    <div class="container">
+        <nav>
+            <ul>
+                <li ng-repeat="nav in navfooter">
+                    <a href="{{nav.link}}" target="{{nav.target}}">
+                        {{nav.name}}
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            &copy;
+            {{copyright.year}}, 
+            <a href="{{copyright.link_name}}" target="{{copyright.target_name}}">{{copyright.name}}</a>. Coded by
+            <a href="{{copyright.link_by}}" target="{{copyright.target_by}}">{{copyright.by}}</a>.
+        </div>
+    </div>
+</footer>

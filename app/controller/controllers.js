@@ -90,6 +90,19 @@ app.controller("welcomeController", function($scope){
 	$scope.dash.logo = "./assets/img/logo_AI.png";
 	$scope.dash.video = "#";
 	$scope.dash.about = "Tetang Perusahaan di sini semuanyaaaaa...";
+	$scope.dash.slides = [{
+		"img": "./assets/img/ak3.png",
+		"title": "title 1",
+		"status": "active"
+	},{
+		"img": "./assets/img/bg3.jpg",
+		"title": "title 2",
+		"status": ""
+	},{
+		"img": "./assets/img/bg4.jpg",
+		"title": "title 3",
+		"status": ""
+	}];
 	$scope.dash.category = [{
 		"category": "Row Material",
 		"abbreviation" : "RM",
@@ -105,7 +118,8 @@ app.controller("welcomeController", function($scope){
 		"abbreviation" : "TS",
 		"ket": "bla bal bal bala blaaa",
 		"icon": "icon-danger"
-	}]
+	}];
+
 });
 
 app.controller("careerController", function($scope){

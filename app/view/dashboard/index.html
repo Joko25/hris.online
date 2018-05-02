@@ -1,15 +1,43 @@
-		<div class="index-page page-header" filter-color="orange">
-            <div class="page-header-image" data-parallax="true" style="background-image: url('./assets/img/ak3.png');">
+		<div class="index-page page-header" filter-color="info">
+            <!-- <div class="page-header-image" data-parallax="true" style="background-image: url('./assets/img/ak3.png');">
+            </div>
+             -->
+            <div class="page-header-image">
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li ng-repeat="sl in dash.slides" data-target="#carouselExampleIndicators" data-slide-to="{{$index}}" class="{{sl.status}}"></li>
+                                <!-- <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li> -->
+                            </ol>
+                            <div class="carousel-inner" role="listbox">
+                                <div ng-repeat="slide in dash.slides" class="carousel-item {{slide.status}}">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h5>{{slide.title}}</h5>
+                                    </div>
+                                    <img class="d-block" src="{{slide.img}}" alt="First slide" style="width: 100%">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="container">
                 <div class="content-center brand">
                     <img class="n-logo" src="{{logo}}" alt="">
                     <h1 class="h1-seo">{{dash.title}}</h1>
                     <h3>{{dash.subtitle}}</h3>
-	                    <a href="{{dash.video}}" target="_blank" class="btn btn-danger btn-raised btn-lg">
-	                        <i class="fa fa-play"></i> Watch video
-	                    </a>
+                        <a href="{{dash.video}}" target="_blank" class="btn btn-danger btn-raised btn-lg">
+                            <i class="fa fa-play"></i> Watch video
+                        </a>
                 </div>
+                <a class="carousel-control-prev" target="_self" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <i class="now-ui-icons arrows-1_minimal-left"></i>
+                </a>
+                <a class="carousel-control-next" target="_self" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <i class="now-ui-icons arrows-1_minimal-right"></i>
+                </a>
             </div>
         </div>
         <div class="main">

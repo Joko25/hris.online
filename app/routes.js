@@ -7,6 +7,10 @@ app.config(function($routeProvider){
 		templateUrl : 'app/view/menu/read_menu.view.html',
 		controller : 'menuController'
 	})
+	.when('/administrator',{
+		templateUrl : 'app/view/admin/admin.html',
+		controller : 'adminController'
+	})
 	.when('/login',{
 		templateUrl : 'app/view/login/login.html'
 	})

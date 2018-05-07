@@ -228,3 +228,14 @@ app.controller("careerController", function($scope){
 
 	}];
 });
+
+app.controller("loginController", function($scope){
+	$scope.data = {};
+	$scope.signin = function(){
+		console.log($scope.data);
+		var username = $scope.data.username;
+    	var password = $scope.data.password;
+
+    	console.log("Username "+username+" or password is undifined "+password);
+	}
+});

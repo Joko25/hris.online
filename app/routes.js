@@ -11,6 +11,22 @@ app.config(function($routeProvider){
 		templateUrl : 'app/view/admin/admin.html',
 		controller : 'adminController'
 	})
+	.when('/page_index',{
+		templateUrl : 'app/view/admin/page_index.html',
+		controller : 'adminController'
+	})
+	.when('/page_index',{
+		templateUrl : 'app/view/admin/page_index.html',
+		controller : 'adminController'
+	})
+	.when('/page_product',{
+		templateUrl : 'app/view/admin/page_product.html',
+		controller : 'adminController'
+	})
+	.when('/page_career',{
+		templateUrl : 'app/view/admin/page_career.html',
+		controller : 'adminController'
+	})
 	.when('/login',{
 		templateUrl : 'app/view/login/login.html',
 		controller: 'loginController'

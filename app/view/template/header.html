@@ -32,12 +32,23 @@
                     <li class="nav-item" ng-repeat="na in nav">
                         <a class="nav-link" href="{{na.link}}" target="{{na.target}}">{{na.name}}</a>
                     </li>
-                    <li class="nav-item" ng-repeat="nm in navmedia">
+                    <li class="nav-item dropdown" ng-if="status=='true'">
+                        <!-- <div class="dropdown"> -->
+                          <a class="nav-link dropdown-toggle" data-toggle="dropdown">Hello, {{user}}<span class="caret"></span></a>
+                          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/users">Profile</a></li>
+                            <li><a class="dropdown-item" href="/setting">Setting</a></li>
+                            <div class="dropdown-divider"></div>
+                            <li><a class="dropdown-item" href="#" target="_self" ng-click="logout()">Logout</a></li>
+                          </ul>
+                    </li>
+
+                    <!-- <li class="nav-item" ng-repeat="nm in navmedia">
                         <a class="nav-link" rel="tooltip" title="{{nm.title}}" data-placement="bottom" href="{{nm.link}}" target="{{nm.target}}">
                             <i class="fa {{nm.icon}}"></i>
                             <p class="d-lg-none d-xl-none">{{nm.name}}</p>
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>

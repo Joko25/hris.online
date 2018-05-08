@@ -1,0 +1,124 @@
+<div class="page-header" style="height: 80px;">
+    <!-- <div class="page-header-image" data-parallax="true" style="background-image: url('./assets/img/bg6.jpg');"></div>
+    <div class="container">
+        <div class="content-center brand">
+            <h1 class="h1-seo">admin at {{career.title}}</h1>
+            <h3>{{career.slog}}</h3>
+                <form class="form" method="" action="">
+                <div class="content">
+                    <div class="input-group form-group-no-border input-md">
+                        <span class="input-group-addon">
+                            <i class="now-ui-icons ui-1_zoom-bold"></i>
+                        </span>
+                        <input type="text" class="form-control" placeholder="Search" ng-mode='search'/>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div> -->
+</div>
+<div class="main" >
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2 col-md-12">
+                    <span class="title">Master</span><br/>
+                    <div class="fixed-section" style="height: 350px">
+                        <ul>
+                            <li><a href="#/master_product">Master Product</a></li>
+                            <li><a class="active" href="#/master_category">Master Category</a></li>
+                            <!-- <li><a class="active" href="#/page_career">Career</a></li> -->
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-10 col-md-12">
+                    <h4 class="title">Master Category</h4>
+                    <!-- <a href="" class="btn btn-sm">Add</a> -->
+                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#dlgCategory">
+                      Add Category
+                    </button>
+                    <!-- The Modal -->
+                    <div class="modal fade" id="dlgCategory">
+                      <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+
+                          <!-- Modal Header -->
+                          <div class="modal-header">
+                            <span class="modal-title">Entry Category</span>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          </div>
+
+                          <!-- Modal body -->
+                          <div class="modal-body">
+                            <div class="row">
+                                <div class="col-sm-6 col-lg-4">
+                                    ID Category
+                                </div>
+                                <div class="col-sm-6 col-lg-3">
+                                    <div class="form-group">
+                                        <!-- <label>Title Page</label> -->
+                                        <input type="text" value="" placeholder="ID Category" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6 col-lg-4">
+                                    Category
+                                </div>
+                                <div class="col-sm-6 col-lg-8">
+                                    <div class="form-group">
+                                        <!-- <label>Title Page</label> -->
+                                        <input type="text" value="" placeholder="Category" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6 col-lg-4">
+                                    Category Name
+                                </div>
+                                <div class="col-sm-6 col-lg-8">
+                                    <div class="form-group">
+                                        <!-- <label>Title Page</label> -->
+                                        <input type="text" value="" placeholder="Category Name" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                            
+                          </div>
+
+                          <!-- Modal footer -->
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" >Save</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                    <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th>No.</th>
+                            <th>ID Category</th>
+                            <th>Category</th>
+                            <th>Category Name</th>
+                            <th>Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td valign="middle">1</td>
+                            <td valign="middle">CAT01</td>
+                            <td valign="middle">RM</td>
+                            <td valign="middle">Row Material</td>
+                            <td><a href="" class="btn btn-success btn-sm">Edit</a>
+                                <a href="" class="btn btn-danger btn-sm">Delete</a></td>
+                          </tr>
+                          
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

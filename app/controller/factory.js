@@ -4,7 +4,7 @@ app.factory("loginFactory", function($http){
 	factory.login = function(username, password){
         return $http({
             method: 'GET',
-            url: 'http://localhost/hris.online/class/model/login.php?username=' + username + '&password='+password
+            url: 'http://localhost:8080/hris.online.ask/class/model/login.php?username=' + username + '&password='+password
         });
     };
 

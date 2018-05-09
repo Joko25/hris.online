@@ -11,6 +11,10 @@ app.config(function($routeProvider){
 		templateUrl : 'app/view/admin/admin.html',
 		controller : 'adminController'
 	})
+	.when('/hris',{
+		templateUrl : 'app/view/hris/hris.html',
+		controller : 'adminController'
+	})
 	.when('/page_index',{
 		templateUrl : 'app/view/admin/page_index.html',
 		controller : 'adminController'
@@ -33,6 +37,10 @@ app.config(function($routeProvider){
 	})
 	.when('/master_category',{
 		templateUrl : 'app/view/admin/master_category.html',
+		controller : 'adminController'
+	})
+	.when('/master_prodfam',{
+		templateUrl : 'app/view/admin/master_prodfam.html',
 		controller : 'adminController'
 	})
 	.when('/login',{

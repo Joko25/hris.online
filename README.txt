@@ -10,3 +10,4 @@ LAMPIRAN
 STATUS REKRUTMEN
 
 https://www.w3schools.com/bootstrap4
+icon https://nucleoapp.com/?ref=1712

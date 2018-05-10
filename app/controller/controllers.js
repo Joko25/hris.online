@@ -279,6 +279,14 @@ app.controller("careerController", function($scope){
 
 app.controller("loginController", function($scope, loginFactory, UserService, $location){
 	$scope.data = {};
+    // $scope.loginstatus = 'false';
+
+    $scope.closemsg = function(){
+    	// $scope.loginstatus = null;
+    	location.reload();
+    	console.log('close');
+    }
+
 	$scope.signin = function(){
 		console.log($scope.data);
 		var username = $scope.data.username;
@@ -301,10 +309,13 @@ app.controller("loginController", function($scope, loginFactory, UserService, $l
 		        $location.path('/administrator');
 		        location.reload();
     		}else{
-
+    			// alert();
+    			 $scope.loginstatus = 'User not found.';
+    			 console.log('error');
     		}
     	}, function errorCallback(response){
             console.log("Unable to retrieve record.");
+            $scope.loginstatus = 'please check your connection.';
         });
 
 	}

@@ -3,6 +3,11 @@
     </div>
     <div class="container content-center">
        <div class="col-md-4 content-center">
+                <div class="alert alert-danger alert-dismissible fade show"  ng-show="loginstatus">
+                    <button type="button" class="close" data-dismiss="alert" ng-click="closemsg()">&times;</button>
+                    <strong>Warning!</strong> {{loginstatus}}
+                </div>
+                
                 <div class="card card-login card-plain">
                     <!-- <form class="form" method="" action=""> -->
                         <div class="header header-primary text-center">

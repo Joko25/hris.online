@@ -280,6 +280,7 @@ app.controller("careerController", function($scope){
 app.controller("loginController", function($scope, loginFactory, UserService, $location){
 	$scope.data = {};
     // $scope.loginstatus = 'false';
+    $scope.alertType=null;
 
     $scope.closemsg = function(){
     	// $scope.loginstatus = null;
@@ -311,10 +312,12 @@ app.controller("loginController", function($scope, loginFactory, UserService, $l
     		}else{
     			// alert();
     			 $scope.loginstatus = 'User not found.';
+    			 $scope.alertType='alert-danger';
     			 console.log('error');
     		}
     	}, function errorCallback(response){
             console.log("Unable to retrieve record.");
+            $scope.alertType='alert-danger';
             $scope.loginstatus = 'please check your connection.';
         });
 

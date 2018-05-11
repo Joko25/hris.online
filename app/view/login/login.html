@@ -3,47 +3,47 @@
     </div>
     <div class="container content-center">
        <div class="col-md-4 content-center">
-                <div class="alert alert-danger alert-dismissible fade show"  ng-show="loginstatus">
-                    <button type="button" class="close" data-dismiss="alert" ng-click="closemsg()">&times;</button>
-                    <strong>Warning!</strong> {{loginstatus}}
-                </div>
-                
-                <div class="card card-login card-plain">
-                    <!-- <form class="form" method="" action=""> -->
-                        <div class="header header-primary text-center">
-                            <div class="logo-container">
-                                <!-- <img src="./assets/img/now-logo.png" alt=""> -->
-                            </div>
-                        </div>
-                        <div class="content">
-                            <div class="input-group form-group-no-border input-md">
-                                <span class="input-group-addon">
-                                    <i class="now-ui-icons users_circle-08"></i>
-                                </span>
-                                <input type="text" class="form-control" placeholder="Username" ng-model='data.username'/>
-                            </div>
-                            <div class="input-group form-group-no-border input-lg">
-                                <span class="input-group-addon">
-                                    <i class="now-ui-icons text_caps-small"></i>
-                                </span>
-                                <input type="password" placeholder="Password" class="form-control" ng-model='data.password'/>
-                            </div>
-                        </div>
-                        <div class="footer text-center">
-                            <button class="btn btn-primary btn-round btn-lg btn-block" ng-click="signin()">Sign In</button>
-                        </div>
-                        <div class="pull-left">
-                            <h6>
-                                <a href="#/registrasi" class="link">Create Account</a>
-                            </h6>
-                        </div>
-                        <div class="pull-right">
-                            <h6>
-                                <a href="#/help" class="link">Need Help?</a>
-                            </h6>
-                        </div>
-                    <!-- </form> -->
-                </div>
+            <div class="alert {{alertType}} alert-dismissible fade show"  ng-show="alertType">
+                <button type="button" class="close" data-dismiss="alert" ng-click="closemsg()">&times;</button>
+                <strong>Warning!</strong> {{loginstatus}}
             </div>
+            
+            <div class="card card-login card-plain">
+                <!-- <form class="form" method="" action=""> -->
+                    <div class="header header-primary text-center">
+                        <div class="logo-container">
+                            <!-- <img src="./assets/img/now-logo.png" alt=""> -->
+                        </div>
+                    </div>
+                    <div class="content">
+                        <div class="input-group form-group-no-border input-md">
+                            <span class="input-group-addon">
+                                <i class="now-ui-icons users_circle-08"></i>
+                            </span>
+                            <input type="text" class="form-control" placeholder="Username" ng-model='data.username'/>
+                        </div>
+                        <div class="input-group form-group-no-border input-lg">
+                            <span class="input-group-addon">
+                                <i class="now-ui-icons text_caps-small"></i>
+                            </span>
+                            <input type="password" placeholder="Password" class="form-control" ng-model='data.password'/>
+                        </div>
+                    </div>
+                    <div class="footer text-center">
+                        <button class="btn btn-primary btn-round btn-lg btn-block" ng-click="signin()">Sign In</button>
+                    </div>
+                    <div class="pull-left">
+                        <h6>
+                            <a href="#/registrasi" class="link">Create Account</a>
+                        </h6>
+                    </div>
+                    <div class="pull-right">
+                        <h6>
+                            <a href="#/help" class="link">Need Help?</a>
+                        </h6>
+                    </div>
+                <!-- </form> -->
+            </div>
+        </div>
     </div>
 </div>

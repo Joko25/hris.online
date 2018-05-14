@@ -12,8 +12,8 @@
 		public $category;
 		public $category_name;
 		public $last_update;
-		public $page;
-		public $limit;
+		// public $page;
+		// public $limit;
 		// public $akses;
 
 		function __construct($db)
@@ -32,8 +32,8 @@
 		}
 
 		public function read(){
-			$offset = ($this->page-1)*$this->limit;
-			$query = "SELECT * FROM ".$this->table_name." order by last_update desc limit ".$this->limit." offset ".$offset;
+			// $offset = ($this->page-1)*$this->limit;
+			$query = "SELECT * FROM ".$this->table_name." order by last_update desc";
 
 			$stmt = $this->conn->prepare($query);
 

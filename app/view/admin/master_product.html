@@ -34,22 +34,30 @@
                 <div class="col-lg-10 col-md-12">
                     <a href="#/administrator">Administrator</a> > <span class="title">Master Product</span>
                     <hr>
-                    <div class="icons-container">
-                        <i class="now-ui-icons ui-1_send"></i>
-                        <i class="now-ui-icons ui-2_like"></i>
-                        <i class="now-ui-icons transportation_air-baloon"></i>
-                        <i class="now-ui-icons text_bold"></i>
-                        <i class="now-ui-icons tech_headphones"></i>
-                        <i class="now-ui-icons emoticons_satisfied"></i>
-                        <i class="now-ui-icons shopping_cart-simple"></i>
-                        <i class="now-ui-icons objects_spaceship"></i>
-                        <i class="now-ui-icons media-2_note-03"></i>
-                        <i class="now-ui-icons ui-2_favourite-28"></i>
-                        <i class="now-ui-icons design_palette"></i>
-                        <i class="now-ui-icons clothes_tie-bow"></i>
-                        <i class="now-ui-icons location_pin"></i>
-                        <i class="now-ui-icons objects_key-25"></i>
-                        <i class="now-ui-icons travel_istanbul"></i>
+                    <div class="container">
+                        <table datatable="ng" dt-options="dtOptions" dt-column-defs="dtColumnDefs" class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th style="font-size: 12px;">ITEM NO</th>
+                                    <th style="font-size: 12px;">ITEM NAME</th>
+                                    <th style="font-size: 12px;">CATEGORY</th>
+                                    <th style="font-size: 12px;">PRODFAM</th>
+                                    <th style="font-size: 12px;">SPESIFICATION</th>
+                                    <th style="font-size: 12px;">ACTION</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                            <tr ng-repeat="cat in categories">
+                                <td style="font-size: 11px;">{{ cat.code_category }}</td>
+                                <td style="font-size: 11px;">{{ cat.category_name }}</td>
+                                <td style="font-size: 11px;">{{ cat.last_update }}</td>
+                                <td style="font-size: 11px;"></td>
+                                <td style="font-size: 11px;"></td>
+                                <td style="font-size: 11px;">EDIT | DELETE</td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

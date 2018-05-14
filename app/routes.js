@@ -33,7 +33,7 @@ app.config(function($routeProvider){
 	})
 	.when('/master_product',{
 		templateUrl : 'app/view/admin/master_product.html',
-		controller : 'adminController'
+		controller : 'productController'
 	})
 	.when('/master_category',{
 		templateUrl : 'app/view/admin/master_category.html',

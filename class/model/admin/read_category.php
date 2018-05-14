@@ -12,8 +12,8 @@ $db = $database->getConnection();
 
 $category = new Category($db);
 
-$category->page = isset($_GET['page']) ? $_GET['page'] : die();
-$category->limit = isset($_GET['limit']) ? $_GET['limit'] : die();
+// $category->page = isset($_GET['page']) ? $_GET['page'] : die();
+// $category->limit = isset($_GET['limit']) ? $_GET['limit'] : die();
 
 // echo $login->offset;
 $stmt = $category->read();

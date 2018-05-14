@@ -1,4 +1,4 @@
-app.controller("adminController", function ($scope, UserService, adminFactory) {
+app.controller("adminController", function ($scope, UserService, adminFactory, DTOptionsBuilder, DTColumnDefBuilder) {
 	// body...
 	$scope.user =  sessionStorage.getItem('username');
 	$scope.alert = null;
@@ -6,7 +6,16 @@ app.controller("adminController", function ($scope, UserService, adminFactory) {
 	$scope.showCat = null;
 	$scope.categories;
 	$scope.pageno = [];
+	$scope.dtInstance = {};
 	var link = '';
+
+	$scope.dtOptions = DTOptionsBuilder.newOptions().withPaginationType('full_numbers').withDisplayLength(5);
+    $scope.dtColumnDefs = [
+        DTColumnDefBuilder.newColumnDef(0),
+        DTColumnDefBuilder.newColumnDef(1),
+        DTColumnDefBuilder.newColumnDef(2),
+        DTColumnDefBuilder.newColumnDef(3).notSortable()
+    ];
 
 	function loadCat(page, limit){
 
@@ -15,21 +24,17 @@ app.controller("adminController", function ($scope, UserService, adminFactory) {
 		var a = page;
 		var b = limit;
 
-		adminFactory.readCategory(a, b).then(function successCallback(response){
-			console.log(Math.round(response.data.total/5));
+		adminFactory.readCategory().then(function successCallback(response){
+			// console.log(Math.round(response.data.total/5));
 			$scope.categories = response.data.rows;
-			$scope.page = response.data.total;
+			// $scope.page = response.data.total;
 
-			for (var i = 0; i < Math.round(response.data.total/5); i++) {
-				console.log(i);
-				$scope.pageno.push(i);
-			}
 		}, function errorCallback(response){
 			console.log("Unable to read record.");
 		});
 	}
 
-	loadCat(1,5);
+	loadCat();
 
 	$scope.load = function(page, limit){
 		console.log('load '+page+' '+limit);
@@ -42,6 +47,7 @@ app.controller("adminController", function ($scope, UserService, adminFactory) {
 	// console.log(sessionStorage.getItem('username'));
 
 	$scope.saveCat = function(){
+		console.log(link);
 		if (link == 'save') {
 			adminFactory.createCategory($scope).then(function successCallback(response){
 	    		// tell the user new product was created
@@ -52,6 +58,7 @@ app.controller("adminController", function ($scope, UserService, adminFactory) {
 				$scope.category = null;
 				$scope.category_name = null;
 	    		loadCat();
+	    		// $scope.dtInstance.rerender();
 	    		$('#dlgCategory').modal('hide');
 	            // $scope.showToast(response.data.message);
 	     
@@ -92,4 +99,28 @@ app.controller("adminController", function ($scope, UserService, adminFactory) {
 		link = 'update';
 		//document.getElementById('dlgCategory').modal('show');
 	}
+});
+
+app.controller("productController", function($scope, DTOptionsBuilder, DTColumnDefBuilder, adminFactory){
+    // var vm = this;
+    // vm.persons = [];
+    $scope.dtOptions = DTOptionsBuilder.newOptions().withPaginationType('full_numbers').withDisplayLength(5);
+    $scope.dtColumnDefs = [
+        DTColumnDefBuilder.newColumnDef(0),
+        DTColumnDefBuilder.newColumnDef(1),
+        DTColumnDefBuilder.newColumnDef(2).notSortable()
+    ];
+
+    adminFactory.readCategory(1,10).then(function successCallback(response){
+		// console.log(Math.round(response.data.total/5));
+		$scope.categories = response.data.rows;
+		// $scope.page = response.data.total;
+
+		// for (var i = 0; i < Math.round(response.data.total/5); i++) {
+		// 	console.log(i);
+		// 	$scope.pageno.push(i);
+		// }
+	}, function errorCallback(response){
+		console.log("Unable to read record.");
+	});
 });

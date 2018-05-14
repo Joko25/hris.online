@@ -18,7 +18,7 @@ app.factory("adminFactory", function($http){
 		console.log('http://localhost:8080/hris.online.ask/class/model/admin/read_category.php?page='+page+'&limit='+limit);
 		return $http({
 			method: 'get',
-			url: 'http://localhost:8080/hris.online.ask/class/model/admin/read_category.php?page='+page+'&limit='+limit
+			url: 'http://localhost:8080/hris.online.ask/class/model/admin/read_category.php'
 		})
 	}
 

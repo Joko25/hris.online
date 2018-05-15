@@ -1,8 +1,5 @@
 <?php  
 
-	/**
-	* 
-	*/
 	class Category
 	{
 		
@@ -23,6 +20,17 @@
 
 		public function total(){
 			$query = "SELECT count(*) FROM ".$this->table_name;
+
+			$stmt = $this->conn->prepare($query);
+
+			$stmt->execute();
+
+			return $stmt;
+		}
+
+		public function json(){
+			// $offset = ($this->page-1)*$this->limit;
+			$query = "SELECT code_category, category_name FROM ".$this->table_name." order by last_update desc";
 
 			$stmt = $this->conn->prepare($query);
 
@@ -63,6 +71,58 @@
 	            return false;
 	        }
 		}
+
+		public function update(){
+			// update query code_category = :code_category,
+	        $query = "UPDATE
+	                    " . $this->table_name . "
+	                SET
+	                    category_name = :category_name,
+	                    last_update = :last_update
+	                WHERE
+	                    code_category = :category";
+
+	        // prepare query statement
+	        $stmt = $this->conn->prepare($query);
+
+	        // sanitize
+	        $this->category=htmlspecialchars(strip_tags($this->category));
+	        $this->category_name=htmlspecialchars(strip_tags($this->category_name));
+	        $this->last_update=htmlspecialchars(strip_tags($this->last_update));
+
+	        // bind new values
+	        $stmt->bindParam(':category', $this->category);
+	        $stmt->bindParam(':category_name', $this->category_name);
+	        $stmt->bindParam(':last_update', $this->last_update);
+
+	        // execute the query
+	        if($stmt->execute()){
+	            return true;
+	        }else{
+	            return false;
+	        }
+		}
+
+		function delete(){
+	        // delete query
+	        $query = "DELETE FROM " . $this->table_name . " WHERE code_category = ?";
+	     
+	        // prepare query
+	        $stmt = $this->conn->prepare($query);
+	     
+	        // sanitize
+	        $this->category=htmlspecialchars(strip_tags($this->category));
+	     
+	        // bind id of record to delete
+	        $stmt->bindParam(1, $this->category);
+	     
+	        // execute query
+	        if($stmt->execute()){
+	            return true;
+	        }
+	     
+	        return false;
+	    }
 	}
 
 ?>

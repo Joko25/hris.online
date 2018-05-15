@@ -22,17 +22,17 @@ $data = json_decode(file_get_contents("php://input"));
 
 
 $category->category = $data->category;
-$category->category_name = $data->category_name;
-$category->last_update = date('Y-m-d H:i:s');
+// $category->category_name = $data->category_name;
+// $category->last_update = date('Y-m-d H:i:s');
 
-if ($category->create()) {
+if ($category->delete()) {
 	# code...
 	echo '{';
-        echo '"message": "Category was created."';
+        echo '"message": "Category was updated."';
     echo '}';
 }else{
 	echo '{';
-        echo '"message": "Unable to create category."';
+        echo '"message": "Unable to update category."';
     echo '}';
 }
 

@@ -25,7 +25,7 @@ app.controller("adminController", function ($scope, UserService, adminFactory, D
 		var b = limit;
 
 		adminFactory.readCategory().then(function successCallback(response){
-			// console.log(Math.round(response.data.total/5));
+			console.log(response.data.rows);
 			$scope.categories = response.data.rows;
 			// $scope.page = response.data.total;
 
@@ -45,6 +45,27 @@ app.controller("adminController", function ($scope, UserService, adminFactory, D
 
 
 	// console.log(sessionStorage.getItem('username'));
+
+	$scope.deleteCat = function(id){
+		console.log('delete '+id);
+		adminFactory.deleteCategory(id).then(function successCallback(response){
+    		// tell the user new product was created
+    		console.log(response);
+    		$scope.alert = response.data.message;
+    		$scope.alertType = 'alert-success';
+    		$scope.id_category = null;
+			$scope.category = null;
+			$scope.category_name = null;
+    		loadCat();
+    		$('#dlgCategory').modal('hide');
+            
+    	}, function errorCallback(response){
+    		console.log(response);
+    		$scope.alert = "Unable to create record.";
+    		$scope.alertType = 'alert-danger';
+    		// $scope.showToast("Unable to create record.");
+    	});
+	}
 
 	$scope.saveCat = function(){
 		console.log(link);
@@ -77,7 +98,24 @@ app.controller("adminController", function ($scope, UserService, adminFactory, D
 	    		// $scope.showToast("Unable to create record.");
 	    	});
 		}else{
-			console.log('edit');
+			console.log('edit ');
+			adminFactory.updateCategory($scope).then(function successCallback(response){
+	    		// tell the user new product was created
+	    		console.log(response);
+	    		$scope.alert = response.data.message;
+	    		$scope.alertType = 'alert-success';
+	    		$scope.id_category = null;
+				$scope.category = null;
+				$scope.category_name = null;
+	    		loadCat();
+	    		$('#dlgCategory').modal('hide');
+	            
+	    	}, function errorCallback(response){
+	    		console.log(response);
+	    		$scope.alert = "Unable to create record.";
+	    		$scope.alertType = 'alert-danger';
+	    		// $scope.showToast("Unable to create record.");
+	    	});
 		}
 	};
 
@@ -104,6 +142,7 @@ app.controller("adminController", function ($scope, UserService, adminFactory, D
 app.controller("productController", function($scope, DTOptionsBuilder, DTColumnDefBuilder, adminFactory){
     // var vm = this;
     // vm.persons = [];
+    var link = '';
     $scope.dtOptions = DTOptionsBuilder.newOptions().withPaginationType('full_numbers').withDisplayLength(5);
     $scope.dtColumnDefs = [
         DTColumnDefBuilder.newColumnDef(0),
@@ -111,16 +150,81 @@ app.controller("productController", function($scope, DTOptionsBuilder, DTColumnD
         DTColumnDefBuilder.newColumnDef(2).notSortable()
     ];
 
-    adminFactory.readCategory(1,10).then(function successCallback(response){
-		// console.log(Math.round(response.data.total/5));
-		$scope.categories = response.data.rows;
-		// $scope.page = response.data.total;
+    $scope.names = [];
 
-		// for (var i = 0; i < Math.round(response.data.total/5); i++) {
-		// 	console.log(i);
-		// 	$scope.pageno.push(i);
-		// }
+    adminFactory.jsonCategory().then(function successCallback(response){
+		//$scope.categories = response.data.rows;
+		$scope.names = eval(response.data);
+		// pus
+		console.log(eval(response.data));
 	}, function errorCallback(response){
 		console.log("Unable to read record.");
 	});
+
+	$scope.newProduct = function(){
+		$scope.alertType = null;
+		$scope.part_no = null;
+		$scope.part_name = null;
+		$scope.category = null;
+		$scope.description = null;
+		// $scope.dlgCategory.modal('show');
+		// $scope.showCat = 'true';
+		link = 'save';
+		console.log('new');
+	}
+
+	$scope.saveProduct = function(){
+		console.log('save product');
+		console.log(link);
+		if (link == 'save') {
+			adminFactory.createProduct($scope).then(function successCallback(response){
+	    		// tell the user new product was created
+	    		console.log(response);
+	    		$scope.alert = response.data.message;
+	    		$scope.alertType = 'alert-success';
+	    		$scope.id_category = null;
+				$scope.category = null;
+				$scope.category_name = null;
+	    		loadCat();
+	    		// $scope.dtInstance.rerender();
+	    		$('#dlgCategory').modal('hide');
+	            // $scope.showToast(response.data.message);
+	     
+	            // refresh the list
+	            // $scope.readCategory();
+	     
+	            // close dialog
+	            // $scope.cancel();
+	     
+	            // remove form values
+	            // $scope.clearCategoryForm();
+	    	}, function errorCallback(response){
+	    		console.log(response);
+	    		$scope.alert = "Unable to create record.";
+	    		$scope.alertType = 'alert-danger';
+	    		// $scope.showToast("Unable to create record.");
+	    	});
+		}else{
+			console.log('edit ');
+			adminFactory.updateCategory($scope).then(function successCallback(response){
+	    		// tell the user new product was created
+	    		console.log(response);
+	    		$scope.alert = response.data.message;
+	    		$scope.alertType = 'alert-success';
+	    		$scope.id_category = null;
+				$scope.category = null;
+				$scope.category_name = null;
+	    		loadCat();
+	    		$('#dlgCategory').modal('hide');
+	            
+	    	}, function errorCallback(response){
+	    		console.log(response);
+	    		$scope.alert = "Unable to create record.";
+	    		$scope.alertType = 'alert-danger';
+	    		// $scope.showToast("Unable to create record.");
+	    	});
+		}
+	}
+
+
 });

@@ -141,7 +141,7 @@
                                     <td  style="font-size: 11px;" valign="middle">{{cat.category_name | uppercase}}</td>
                                     <td  style="font-size: 11px;" valign="middle">{{cat.last_update}}</td>
                                     <td style="font-size: 11px;" ><a href="" data-toggle="modal" data-target="#dlgCategory" ng-click='editModal(cat.code_category, cat.category_name)'><i class="now-ui-icons travel_info"></i> Edit</a> | 
-                                        <a href="" data-toggle="modal" data-target="#dlgDElete" class=""><i class="now-ui-icons ui-1_simple-remove"></i> Delete</a></td>
+                                        <a href="" class="" ng-click = "deleteCat(cat.code_category)"><i class="now-ui-icons ui-1_simple-remove"></i> Delete</a></td><!-- data-toggle="modal" data-target="#dlgDElete" -->
                                 </tr>
                             </tbody>
                         </table>

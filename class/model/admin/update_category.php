@@ -25,14 +25,14 @@ $category->category = $data->category;
 $category->category_name = $data->category_name;
 $category->last_update = date('Y-m-d H:i:s');
 
-if ($category->create()) {
+if ($category->update()) {
 	# code...
 	echo '{';
-        echo '"message": "Category was created."';
+        echo '"message": "Category was updated."';
     echo '}';
 }else{
 	echo '{';
-        echo '"message": "Unable to create category."';
+        echo '"message": "Unable to update category."';
     echo '}';
 }
 

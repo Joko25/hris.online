@@ -143,14 +143,38 @@ app.controller("productController", function($scope, DTOptionsBuilder, DTColumnD
     // var vm = this;
     // vm.persons = [];
     var link = '';
-    $scope.dtOptions = DTOptionsBuilder.newOptions().withPaginationType('full_numbers').withDisplayLength(5);
+    $scope.products;
+    $scope.dtOptions = DTOptionsBuilder.newOptions()
+	    .withPaginationType('full_numbers')
+	    .withDisplayLength(5);
     $scope.dtColumnDefs = [
         DTColumnDefBuilder.newColumnDef(0),
         DTColumnDefBuilder.newColumnDef(1),
-        DTColumnDefBuilder.newColumnDef(2).notSortable()
+        DTColumnDefBuilder.newColumnDef(2),
+        DTColumnDefBuilder.newColumnDef(3),
+        DTColumnDefBuilder.newColumnDef(4),
+        DTColumnDefBuilder.newColumnDef(5),
+        DTColumnDefBuilder.newColumnDef(6).notSortable()
     ];
 
     $scope.names = [];
+
+    function loadProd(){
+
+		console.log('load');
+
+		adminFactory.readProducts().then(function successCallback(response){
+			console.log(response.data.rows);
+			$scope.products = response.data.rows;
+			// $scope.page = response.data.total;
+
+		}, function errorCallback(response){
+			console.log("Unable to read record.");
+		});
+	};
+
+
+	loadProd();
 
     adminFactory.jsonCategory().then(function successCallback(response){
 		//$scope.categories = response.data.rows;
@@ -173,6 +197,14 @@ app.controller("productController", function($scope, DTOptionsBuilder, DTColumnD
 		console.log('new');
 	}
 
+	$scope.editProduct = function(product){
+		console.log(product);
+		$scope.part_no = product.part_no;
+		$scope.part_name = product.part_name;
+		$scope.category = product.category;
+		$scope.description = product.description;
+	}
+
 	$scope.saveProduct = function(){
 		console.log('save product');
 		console.log(link);
@@ -182,22 +214,14 @@ app.controller("productController", function($scope, DTOptionsBuilder, DTColumnD
 	    		console.log(response);
 	    		$scope.alert = response.data.message;
 	    		$scope.alertType = 'alert-success';
-	    		$scope.id_category = null;
+	    		$scope.part_no = null;
+				$scope.part_name = null;
 				$scope.category = null;
-				$scope.category_name = null;
-	    		loadCat();
+				$scope.description = null;
+	    		// loadCat();
+	    		loadProd();
 	    		// $scope.dtInstance.rerender();
-	    		$('#dlgCategory').modal('hide');
-	            // $scope.showToast(response.data.message);
-	     
-	            // refresh the list
-	            // $scope.readCategory();
-	     
-	            // close dialog
-	            // $scope.cancel();
-	     
-	            // remove form values
-	            // $scope.clearCategoryForm();
+	    		$('#dlgProduct').modal('hide');
 	    	}, function errorCallback(response){
 	    		console.log(response);
 	    		$scope.alert = "Unable to create record.";
@@ -206,16 +230,19 @@ app.controller("productController", function($scope, DTOptionsBuilder, DTColumnD
 	    	});
 		}else{
 			console.log('edit ');
-			adminFactory.updateCategory($scope).then(function successCallback(response){
+			adminFactory.updateProduct($scope).then(function successCallback(response){
 	    		// tell the user new product was created
 	    		console.log(response);
 	    		$scope.alert = response.data.message;
 	    		$scope.alertType = 'alert-success';
-	    		$scope.id_category = null;
+	    		$scope.part_no = null;
+				$scope.part_name = null;
 				$scope.category = null;
-				$scope.category_name = null;
-	    		loadCat();
-	    		$('#dlgCategory').modal('hide');
+				$scope.description = null;
+	    		// loadCat();
+	    		loadProd();
+	    		// $scope.dtInstance.rerender();
+	    		$('#dlgProduct').modal('hide');
 	            
 	    	}, function errorCallback(response){
 	    		console.log(response);

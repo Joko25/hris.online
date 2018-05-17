@@ -1,6 +1,7 @@
 app.factory("adminFactory", function($http){
 	var factory = {};
 	
+	// CATEGORY FACTORY
 	factory.createCategory = function($scope){
 		return $http({
 			method: 'POST',
@@ -51,6 +52,49 @@ app.factory("adminFactory", function($http){
 			method: 'get',
 			url: 'http://localhost:8080/hris.online.ask/class/model/admin/json_category.php'
 		})
+	}
+
+
+	// PRODUCTS FACTORY 
+	factory.readProducts = function(page, limit){
+		// console.log('http://localhost:8080/hris.online.ask/class/model/admin/read_category.php?page='+page+'&limit='+limit);
+		return $http({
+			method: 'get',
+			url: 'http://localhost:8080/hris.online.ask/class/model/admin/read_products.php'
+		})
+	}
+	
+	factory.createProduct = function($scope){
+		return $http({
+			method: 'POST',
+			data: {
+				"part_no" : $scope.part_no,
+				"part_name" : $scope.part_name,
+				"category" : $scope.category,
+				"prodfam" : "-",
+				"description" : $scope.description,
+				"images" : "default.jpg"
+			},
+			// url: "http://localhost/hris.online/class/admin/create_category.php"
+			url: 'http://localhost:8080/hris.online.ask/class/model/admin/create_product.php'
+		});
+	}
+
+
+	factory.updateProduct = function($scope){
+		return $http({
+			method: 'POST',
+			data: {
+				"part_no" : $scope.part_no,
+				"part_name" : $scope.part_name,
+				"category" : $scope.category,
+				"prodfam" : "-",
+				"description" : $scope.description,
+				"images" : "default.jpg"
+			},
+			// url: "http://localhost/hris.online/class/admin/create_category.php"
+			url: 'http://localhost:8080/hris.online.ask/class/model/admin/update_product.php'
+		});
 	}
 
 	return factory;

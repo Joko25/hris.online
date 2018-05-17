@@ -97,5 +97,16 @@ app.factory("adminFactory", function($http){
 		});
 	}
 
+	factory.deleteProduct = function(id){
+		return $http({
+			method: 'POST',
+			data: {
+				"part_no" : id
+			},
+			// url: "http://localhost/hris.online/class/admin/create_category.php"
+			url: 'http://localhost:8080/hris.online.ask/class/model/admin/delete_product.php'
+		});
+	}
+
 	return factory;
 });

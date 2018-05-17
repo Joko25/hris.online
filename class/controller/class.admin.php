@@ -103,7 +103,7 @@
 	        }
 		}
 
-		function delete(){
+		public function delete(){
 	        // delete query
 	        $query = "DELETE FROM " . $this->table_name . " WHERE code_category = ?";
 	     
@@ -236,5 +236,27 @@
 
 			return $stmt;
 		}
+
+		public function delete(){
+	        // delete query
+	        $query = "DELETE FROM " . $this->table_name . " WHERE part_no = ?";
+	     
+	        // prepare query
+	        $stmt = $this->conn->prepare($query);
+	     
+	        // sanitize
+	        $this->part_no=htmlspecialchars(strip_tags($this->part_no));
+	     
+	        // bind id of record to delete
+	        $stmt->bindParam(1, $this->part_no);
+	     
+	        // execute query
+	        if($stmt->execute()){
+	            return true;
+	        }
+	     
+	        return false;
+	    }
+
 	}
 ?>

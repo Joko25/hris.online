@@ -43,6 +43,38 @@ app.config(function($routeProvider){
 		templateUrl : 'app/view/admin/master_prodfam.html',
 		controller : 'adminController'
 	})
+	.when('/master_dept',{
+		templateUrl : 'app/view/hris/master_departement.html',
+		controller : 'hrisController'
+	})
+	.when('/master_plant',{
+		templateUrl : 'app/view/hris/master_plant.html',
+		controller : 'hrisController'
+	})
+	.when('/master_absen',{
+		templateUrl : 'app/view/hris/master_absen.html',
+		controller : 'hrisController'
+	})
+	.when('/master_gaji',{
+		templateUrl : 'app/view/hris/master_gaji.html',
+		controller : 'hrisController'
+	})
+	.when('/recruitment',{
+		templateUrl : 'app/view/hris/recruitment.html',
+		controller : 'hrisController'
+	})
+	.when('/employee',{
+		templateUrl : 'app/view/hris/employee.html',
+		controller : 'hrisController'
+	})
+	.when('/payroll',{
+		templateUrl : 'app/view/hris/payroll.html',
+		controller : 'hrisController'
+	})
+	.when('/report',{
+		templateUrl : 'app/view/hris/report.html',
+		controller : 'hrisController'
+	})
 	.when('/login',{
 		templateUrl : 'app/view/login/login.html',
 		controller: 'loginController'

@@ -203,6 +203,28 @@ app.controller("productController", function($scope, DTOptionsBuilder, DTColumnD
 		$scope.part_name = product.part_name;
 		$scope.category = product.category;
 		$scope.description = product.description;
+		$scope.alertType = null;
+	}
+
+	$scope.deleteProduct = function(id){
+		console.log('delete '+id);
+		adminFactory.deleteProduct(id).then(function successCallback(response){
+    		// tell the user new product was created
+    		console.log(response);
+   			// $scope.alert = response.data.message;
+   			// $scope.alertType = 'alert-success';
+   			// $scope.id_category = null;
+			// $scope.category = null;
+			// $scope.category_name = null;
+    		loadProd();
+    		// $('#dlgProduct').modal('hide');
+            
+    	}, function errorCallback(response){
+    		console.log(response);
+    		// $scope.alert = "Unable to create record.";
+    		// $scope.alertType = 'alert-danger';
+    		// $scope.showToast("Unable to create record.");
+    	});
 	}
 
 	$scope.saveProduct = function(){
@@ -252,6 +274,4 @@ app.controller("productController", function($scope, DTOptionsBuilder, DTColumnD
 	    	});
 		}
 	}
-
-
 });

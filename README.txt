@@ -12,5 +12,9 @@ STATUS REKRUTMEN
 https://www.w3schools.com/bootstrap4
 icon https://nucleoapp.com/?ref=1712
 http://angular-ui.github.io/bootstrap/
-//data-tables
+
+##data-tables
 http://l-lin.github.io/angular-datatables/archives/#!/gettingStarted
+
+##for upload file
+https://github.com/danialfarid/ng-file-upload

@@ -80,7 +80,6 @@ app.factory("adminFactory", function($http){
 		});
 	}
 
-
 	factory.updateProduct = function($scope){
 		return $http({
 			method: 'POST',

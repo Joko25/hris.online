@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 11 Mei 2018 pada 12.09
+-- Generation Time: 04 Jun 2018 pada 09.36
 -- Versi Server: 10.1.16-MariaDB
 -- PHP Version: 5.6.24
 
@@ -38,15 +38,54 @@ CREATE TABLE `tbl_category` (
 --
 
 INSERT INTO `tbl_category` (`code_category`, `category_name`, `user_entry`, `last_update`) VALUES
-('1', '2', '', '2018-05-11 06:06:31'),
-('ads', 'fqewqwe', '', '2018-05-11 06:06:53'),
-('ASDE', 'QWER', '', '2018-05-11 06:02:46'),
-('ASDF', 'qr', '', '2018-05-11 06:00:54'),
-('fasd', 'werwr', '', '2018-05-11 05:40:55'),
-('NRM', 'NON ROW MATERIAL', '', '2018-05-11 06:07:02'),
-('RM', 'ROW MATERIAL', '', '2018-05-11 04:58:25'),
-('TES', 'asdfe', '', '2018-05-11 05:40:36'),
-('TS', 'AS', '', '2018-05-11 09:56:22');
+('NRM', 'NON ROW MATERIAL', '', '2018-05-15 09:34:45'),
+('RM', 'ROW MATERIAL', '', '2018-06-04 07:53:41');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tbl_departemen`
+--
+
+CREATE TABLE `tbl_departemen` (
+  `id_departemen` int(11) NOT NULL,
+  `departemen_name` varchar(50) NOT NULL,
+  `user_entry` varchar(10) NOT NULL,
+  `last_update` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tbl_departemen`
+--
+
+INSERT INTO `tbl_departemen` (`id_departemen`, `departemen_name`, `user_entry`, `last_update`) VALUES
+(5, 'IT DE', '', '2018-06-04 09:46:10'),
+(6, 'PPIC', '', '2018-06-04 09:22:40'),
+(8, 'PURCHASING', '', '2018-06-04 09:24:08'),
+(10, 'WAREHOUSE', '', '2018-06-04 13:29:59');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tbl_product`
+--
+
+CREATE TABLE `tbl_product` (
+  `part_no` varchar(10) NOT NULL,
+  `part_name` varchar(50) NOT NULL,
+  `code_category` varchar(5) NOT NULL,
+  `prodfam` varchar(25) NOT NULL,
+  `description` text NOT NULL,
+  `image` varchar(100) NOT NULL,
+  `last_update` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tbl_product`
+--
+
+INSERT INTO `tbl_product` (`part_no`, `part_name`, `code_category`, `prodfam`, `description`, `image`, `last_update`) VALUES
+('TPART', 'TPART NAME', 'NRM', '-', 'a', 'default.jpg', '2018-05-25 09:36:36');
 
 -- --------------------------------------------------------
 
@@ -79,6 +118,19 @@ ALTER TABLE `tbl_category`
   ADD PRIMARY KEY (`code_category`);
 
 --
+-- Indexes for table `tbl_departemen`
+--
+ALTER TABLE `tbl_departemen`
+  ADD PRIMARY KEY (`id_departemen`);
+
+--
+-- Indexes for table `tbl_product`
+--
+ALTER TABLE `tbl_product`
+  ADD PRIMARY KEY (`part_no`),
+  ADD KEY `code_category` (`code_category`);
+
+--
 -- Indexes for table `tbl_users`
 --
 ALTER TABLE `tbl_users`
@@ -89,10 +141,25 @@ ALTER TABLE `tbl_users`
 --
 
 --
+-- AUTO_INCREMENT for table `tbl_departemen`
+--
+ALTER TABLE `tbl_departemen`
+  MODIFY `id_departemen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+--
 -- AUTO_INCREMENT for table `tbl_users`
 --
 ALTER TABLE `tbl_users`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+--
+
+--
+-- Ketidakleluasaan untuk tabel `tbl_product`
+--
+ALTER TABLE `tbl_product`
+  ADD CONSTRAINT `tbl_product_ibfk_1` FOREIGN KEY (`code_category`) REFERENCES `tbl_category` (`code_category`) ON DELETE CASCADE ON UPDATE CASCADE;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

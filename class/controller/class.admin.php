@@ -144,7 +144,7 @@
 		}
 
 		public function create(){
-			$query = "INSERT INTO ".$this->table_name." set part_no=:part_no, part_name=:part_name, category=:category, prodfam=:prodfam, description=:description, image=:images, last_update=:last_update";
+			$query = "INSERT INTO ".$this->table_name." set part_no=:part_no, part_name=:part_name, code_category=:category, prodfam=:prodfam, description=:description, image=:images, last_update=:last_update";
 
 			$stmt = $this->conn->prepare($query);
 
@@ -181,7 +181,7 @@
 			// update query code_category = :code_category,
 	        $query = "UPDATE
 	                    " . $this->table_name . "
-	                SET part_name=:part_name, category=:category, prodfam=:prodfam, description=:description, image=:images, last_update=:last_update
+	                SET part_name=:part_name, code_category=:category, prodfam=:prodfam, description=:description, image=:images, last_update=:last_update
 	                WHERE
 	                    part_no=:part_no";
 

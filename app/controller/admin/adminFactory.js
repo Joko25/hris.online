@@ -81,6 +81,7 @@ app.factory("adminFactory", function($http){
 	}
 
 	factory.updateProduct = function($scope){
+		console.log($scope);
 		return $http({
 			method: 'POST',
 			data: {
@@ -94,6 +95,7 @@ app.factory("adminFactory", function($http){
 			// url: "http://localhost/hris.online/class/admin/create_category.php"
 			url: 'http://localhost:8080/hris.online.ask/class/model/admin/update_product.php'
 		});
+
 	}
 
 	factory.deleteProduct = function(id){

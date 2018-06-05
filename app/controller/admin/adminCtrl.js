@@ -201,7 +201,7 @@ app.controller("productController", function($scope, DTOptionsBuilder, DTColumnD
 		console.log(product);
 		$scope.part_no = product.part_no;
 		$scope.part_name = product.part_name;
-		$scope.category = product.category;
+		$scope.category = product.code_category;
 		$scope.description = product.description;
 		$scope.alertType = null;
 	}
@@ -211,13 +211,7 @@ app.controller("productController", function($scope, DTOptionsBuilder, DTColumnD
 		adminFactory.deleteProduct(id).then(function successCallback(response){
     		// tell the user new product was created
     		console.log(response);
-   			// $scope.alert = response.data.message;
-   			// $scope.alertType = 'alert-success';
-   			// $scope.id_category = null;
-			// $scope.category = null;
-			// $scope.category_name = null;
     		loadProd();
-    		// $('#dlgProduct').modal('hide');
             
     	}, function errorCallback(response){
     		console.log(response);
@@ -228,8 +222,8 @@ app.controller("productController", function($scope, DTOptionsBuilder, DTColumnD
 	}
 
 	$scope.saveProduct = function(){
-		console.log('save product');
-		console.log(link);
+		// console.log('save product');
+		// console.log(link);
 		if (link == 'save') {
 			adminFactory.createProduct($scope).then(function successCallback(response){
 	    		// tell the user new product was created

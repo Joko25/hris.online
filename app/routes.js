@@ -41,7 +41,7 @@ app.config(function($routeProvider){
 	})
 	.when('/master_prodfam',{
 		templateUrl : 'app/view/admin/master_prodfam.html',
-		controller : 'adminController'
+		controller : 'prodfamController'
 	})
 	.when('/master_dept',{
 		templateUrl : 'app/view/hris/master_departement.html',

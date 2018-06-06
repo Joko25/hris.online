@@ -228,7 +228,7 @@
 		}
 		public function read(){
 			// $offset = ($this->page-1)*$this->limit;
-			$query = "SELECT * FROM ".$this->table_name." order by last_update desc";
+			$query = "SELECT a.part_no, a.part_name, a.code_category, a.description, a.last_update, b.prodfam, b.prodfam_name from tbl_product a left join tbl_prodfam b on a.prodfam = b.prodfam order by a.last_update desc";
 
 			$stmt = $this->conn->prepare($query);
 
@@ -258,5 +258,128 @@
 	        return false;
 	    }
 
+	}
+
+	class Prodfam
+	{
+		private $table_name = "tbl_prodfam";
+		private $conn;
+		public $prodfam;
+		public $prodfam_name;
+		public $last_update;
+		// public $page;
+		// public $limit;
+		// public $akses;
+
+		function __construct($db)
+		{
+			$this->conn = $db;
+		}
+
+		public function total(){
+			$query = "SELECT count(*) FROM ".$this->table_name;
+
+			$stmt = $this->conn->prepare($query);
+
+			$stmt->execute();
+
+			return $stmt;
+		}
+
+		public function json(){
+			// $offset = ($this->page-1)*$this->limit;
+			$query = "SELECT prodfam, prodfam_name FROM ".$this->table_name." order by last_update desc";
+
+			$stmt = $this->conn->prepare($query);
+
+			$stmt->execute();
+
+			return $stmt;
+		}
+
+		public function read(){
+			// $offset = ($this->page-1)*$this->limit;
+			$query = "SELECT * FROM ".$this->table_name." order by last_update desc";
+
+			$stmt = $this->conn->prepare($query);
+
+			$stmt->execute();
+
+			return $stmt;
+		}
+
+		public function create(){
+			$query = "INSERT INTO ".$this->table_name." set prodfam=:prodfam, prodfam_name=:prodfam_name, last_update=:last_update";
+
+			$stmt = $this->conn->prepare($query);
+
+			// sanitize
+	        $this->prodfam=htmlspecialchars(strip_tags($this->prodfam));
+	        $this->prodfam_name=htmlspecialchars(strip_tags($this->prodfam_name));
+	        $this->last_update=htmlspecialchars(strip_tags($this->last_update));
+
+	        // bind values
+	        $stmt->bindParam(":prodfam", $this->prodfam);
+	        $stmt->bindParam(":prodfam_name", $this->prodfam_name);
+	        $stmt->bindParam(":last_update", $this->last_update);
+
+	        if($stmt->execute()){
+	            return true;
+	        }else{
+	            return false;
+	        }
+		}
+
+		public function update(){
+			// update query code_category = :code_category,
+	        $query = "UPDATE
+	                    " . $this->table_name . "
+	                SET
+	                    prodfam_name = :prodfam_name,
+	                    last_update = :last_update
+	                WHERE
+	                    prodfam = :prodfam";
+
+	        // prepare query statement
+	        $stmt = $this->conn->prepare($query);
+
+	        // sanitize
+	        $this->prodfam=htmlspecialchars(strip_tags($this->prodfam));
+	        $this->prodfam_name=htmlspecialchars(strip_tags($this->prodfam_name));
+	        $this->last_update=htmlspecialchars(strip_tags($this->last_update));
+
+	        // bind new values
+	        $stmt->bindParam(':prodfam', $this->prodfam);
+	        $stmt->bindParam(':prodfam_name', $this->prodfam_name);
+	        $stmt->bindParam(':last_update', $this->last_update);
+
+	        // execute the query
+	        if($stmt->execute()){
+	            return true;
+	        }else{
+	            return false;
+	        }
+		}
+
+		public function delete(){
+	        // delete query
+	        $query = "DELETE FROM " . $this->table_name . " WHERE prodfam = ?";
+	     
+	        // prepare query
+	        $stmt = $this->conn->prepare($query);
+	     
+	        // sanitize
+	        $this->prodfam=htmlspecialchars(strip_tags($this->prodfam));
+	     
+	        // bind id of record to delete
+	        $stmt->bindParam(1, $this->prodfam);
+	     
+	        // execute query
+	        if($stmt->execute()){
+	            return true;
+	        }
+	     
+	        return false;
+	    }
 	}
 ?>

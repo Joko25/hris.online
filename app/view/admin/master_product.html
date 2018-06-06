@@ -17,7 +17,7 @@
         </div>
     </div> -->
 </div>
-<div class="wrapper">
+<div class="main" style="height: 300px;">
     <div class="section">
         <div class="container">
             <div class="row">
@@ -25,9 +25,9 @@
                     <div class="fixed-section" style="height: 350px">
                         <span class="title">Master</span><br/>
                         <ul>
-                            <li><a class="active" href="#/master_product">Master Product</a></li>
-                            <li><a href="#/master_category">Master Category</a></li>
-                            <!-- <li><a class="active" href="#/page_career">Career</a></li> -->
+                            <li><a class="active" href="#/master_product">Product</a></li>
+                            <li><a href="#/master_category">Category</a></li>
+                            <li><a href="#/master_prodfam">Product Family</a></li>
                         </ul>
                     </div>
                 </div>
@@ -95,12 +95,54 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-6 col-lg-4">
+                                        Prodfam
+                                    </div>
+                                    <div class="col-sm-6 col-lg-8">
+                                        <div class="form-group">
+                                            <!-- <label>Title Page</label> -->
+                                            <!-- <input type="text" value="" placeholder="Category Name" class="form-control" ng-model="category_name"/> -->
+                                            <!-- <select class="form-control" ng-model="category" ng-options="x for x in names"></select> -->
+                                            <select ng-model="prodfam" class="form-control" placeholder="-select prodfam-">
+                                                <option ng-repeat="x in jsonprodfam" value="{{x.prodfam}}">{{x.prodfam_name}}</option>
+                                            </select>
+                                            <!-- {{category}} -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6 col-lg-4">
                                         Description
                                     </div>
                                     <div class="col-sm-6 col-lg-8">
                                         <div class="form-group">
                                             <!-- <label>Title Page</label> -->
                                             <input type="text" value="" placeholder="description" class="form-control" ng-model="description"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6 col-lg-4">
+                                        Images
+                                    </div>
+                                    <div class="col-sm-6 col-lg-8">
+                                        <!-- <input name="images" type="file" style="" ng-model="imgupload" ng-change="angular.element(this).scope().uploadimg()"/>
+                                        <input type="text" value="" placeholder="images name" class="form-control" ng-model="imagesfile"/> -->
+                                        <div class="form-group">
+                                            <div
+                                              class="btn btn-primary btn-upload"
+                                              upload-button
+                                              url="http://localhost:8080/hris.online.ask/class/upload_images.php"
+                                              param="file"
+                                              data="formData"
+                                              accept="{{acceptTypes}}"
+                                              multiple="{{allowMultiple}}"
+                                              force-iframe-upload="{{forceIframeUpload}}"
+                                              required="true|false"
+                                              on-upload="onUpload(files)"
+                                              on-success="onSuccess(response)"
+                                              on-error="onError(response)" 
+                                              on-complete="onComplete(response)"
+                                            >chose images..</div>
                                         </div>
                                     </div>
                                 </div>
@@ -137,7 +179,7 @@
                                 <td style="font-size: 11px;width: 100px;">{{ prod.part_no }}</td>
                                 <td style="font-size: 11px;width: 120px;">{{ prod.part_name }}</td>
                                 <td style="font-size: 11px;width: 50px;">{{ prod.code_category }}</td>
-                                <td style="font-size: 11px;width: 70px;">{{ prod.prodfam }}</td>
+                                <td style="font-size: 11px;width: 70px;">{{ prod.prodfam_name }}</td>
                                 <td style="font-size: 11px;width: 150px;">{{ prod.description }}</td>
                                 <td style="font-size: 11px;width: 70px;">{{ prod.image }}</td>
                                 <td style="font-size: 11px;width: 70px;"><a href="" data-toggle="modal" data-target="#dlgProduct" ng-click='editProduct(prod)' title="Edit Part"><i class="now-ui-icons travel_info"></i></a> | 

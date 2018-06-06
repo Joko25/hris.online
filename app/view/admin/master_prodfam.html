@@ -26,28 +26,28 @@
                         <span class="title">Master</span><br/>
                         <ul>
                             <li><a href="#/master_product">Product</a></li>
-                            <li><a class="active" href="#/master_category">Category</a></li>
-                            <li><a href="#/master_prodfam">Product Family</a></li>
+                            <li><a href="#/master_category">Category</a></li>
+                           <li><a class="active" href="#/master_prodfam">Product Family</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-10 col-md-12">
-                    <a href="#/administrator">Administrator</a> > <span class="title">Master Category</span>
+                    <a href="#/administrator">Administrator</a> > <span class="title">Master Product Family</span>
                     <hr>
                     <div class="container">
                         
-                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#dlgCategory"  ng-click="newCat()"><i class="now-ui-icons ui-1_simple-add"></i> <!-- data-target="#dlgCategory" -->
-                          Add Category
+                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#dlgProdfam"  ng-click="newProdfam()"><i class="now-ui-icons ui-1_simple-add"></i> <!-- data-target="#dlgCategory" -->
+                          Add Product Family
                         </button>
 
                         <!-- The Modal -->
-                        <div class="modal fade" id="dlgCategory">
+                        <div class="modal fade" id="dlgProdfam">
                           <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
 
                               <!-- Modal Header -->
                               <div class="modal-header">
-                                <span class="modal-title">Entry Category</span>
+                                <span class="modal-title">Entry Product Family</span>
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                               </div>
 
@@ -59,34 +59,23 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-6 col-lg-4">
-                                        ID Category
+                                        ID Prodfam
                                     </div>
                                     <div class="col-sm-6 col-lg-3">
                                         <div class="form-group">
                                             <!-- <label>Title Page</label> -->
-                                            <input type="text" value="" placeholder="ID Category" class="form-control" disabled="true" ng-model="id_category"/>
+                                            <input type="text" value="" placeholder="ID Prodfam" class="form-control" disabled="true" ng-model="prodfam"/>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-6 col-lg-4">
-                                        Category
+                                        Prodfam Name
                                     </div>
                                     <div class="col-sm-6 col-lg-8">
                                         <div class="form-group">
                                             <!-- <label>Title Page</label> -->
-                                            <input type="text" value="" placeholder="Category" class="form-control" ng-model="category"/>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6 col-lg-4">
-                                        Category Name
-                                    </div>
-                                    <div class="col-sm-6 col-lg-8">
-                                        <div class="form-group">
-                                            <!-- <label>Title Page</label> -->
-                                            <input type="text" value="" placeholder="Category Name" class="form-control" ng-model="category_name"/>
+                                            <input type="text" value="" placeholder="Prodfam Name" class="form-control" ng-model="prodfam_name"/>
                                         </div>
                                     </div>
                                 </div>
@@ -95,7 +84,7 @@
 
                               <!-- Modal footer -->
                               <div class="modal-footer">
-                                <button type="button" class="btn" ng-click="saveCat()">Save</button>
+                                <button type="button" class="btn" ng-click="saveProdfam()">Save</button>
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                               </div>
 
@@ -128,20 +117,20 @@
                             <thead>
                                 <tr>
                                     <!-- <th>No.</th> -->
-                                    <th style="font-size: 12px;">Category</th>
-                                    <th style="font-size: 12px;">Category Name</th>
+                                    <th style="font-size: 12px;">Id Prodfam</th>
+                                    <th style="font-size: 12px;">Prodfam Name</th>
                                     <th style="font-size: 12px;">Last Entry</th>
                                     <th style="font-size: 12px;">Action</th>
                                 </tr>
                             </thead>
 
                             <tbody>
-                                <tr ng-repeat="cat in categories">
-                                    <td  style="font-size: 11px;" valign="middle">{{cat.code_category | uppercase}}</td>
-                                    <td  style="font-size: 11px;" valign="middle">{{cat.category_name | uppercase}}</td>
-                                    <td  style="font-size: 11px;" valign="middle">{{cat.last_update}}</td>
-                                    <td style="font-size: 11px;" ><a href="" data-toggle="modal" data-target="#dlgCategory" ng-click='editModal(cat.code_category, cat.category_name)'><i class="now-ui-icons travel_info"></i> Edit</a> | 
-                                        <a href="" class="" ng-click = "deleteCat(cat.code_category)"><i class="now-ui-icons ui-1_simple-remove"></i> Delete</a></td><!-- data-toggle="modal" data-target="#dlgDElete" -->
+                                <tr ng-repeat="pf in prodfams">
+                                    <td  style="font-size: 11px;" valign="middle">{{pf.prodfam | uppercase}}</td>
+                                    <td  style="font-size: 11px;" valign="middle">{{pf.prodfam_name | uppercase}}</td>
+                                    <td  style="font-size: 11px;" valign="middle">{{pf.last_update}}</td>
+                                    <td style="font-size: 11px;" ><a href="" data-toggle="modal" data-target="#dlgProdfam" ng-click='editModal(pf.prodfam, pf.prodfam_name)'><i class="now-ui-icons travel_info"></i> Edit</a> | 
+                                        <a href="" class="" ng-click = "deleteProdfam(pf.prodfam)"><i class="now-ui-icons ui-1_simple-remove"></i> Delete</a></td><!-- data-toggle="modal" data-target="#dlgDElete" -->
                                 </tr>
                             </tbody>
                         </table>

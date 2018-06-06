@@ -65,13 +65,15 @@ app.factory("adminFactory", function($http){
 	}
 	
 	factory.createProduct = function($scope){
+		//console.log($scope);
+
 		return $http({
 			method: 'POST',
 			data: {
 				"part_no" : $scope.part_no,
 				"part_name" : $scope.part_name,
 				"category" : $scope.category,
-				"prodfam" : "-",
+				"prodfam" : $scope.prodfam,
 				"description" : $scope.description,
 				"images" : "default.jpg"
 			},
@@ -88,7 +90,7 @@ app.factory("adminFactory", function($http){
 				"part_no" : $scope.part_no,
 				"part_name" : $scope.part_name,
 				"category" : $scope.category,
-				"prodfam" : "-",
+				"prodfam" : $scope.prodfam,
 				"description" : $scope.description,
 				"images" : "default.jpg"
 			},
@@ -106,6 +108,57 @@ app.factory("adminFactory", function($http){
 			},
 			// url: "http://localhost/hris.online/class/admin/create_category.php"
 			url: 'http://localhost:8080/hris.online.ask/class/model/admin/delete_product.php'
+		});
+	}
+
+	// FACTORY PRODFAM
+
+	factory.readProdfam = function(){
+		return $http({
+			method: 'get',
+			url: 'http://localhost:8080/hris.online.ask/class/model/admin/read_prodfam.php'
+		})
+	}
+
+	factory.jsonProdfam = function(){
+		return $http({
+			method: 'get',
+			url: 'http://localhost:8080/hris.online.ask/class/model/admin/json_prodfam.php'
+		})
+	}
+
+	factory.createProdfam = function($scope){
+		return $http({
+			method: 'POST',
+			data: {
+				"prodfam" : $scope.prodfam,
+				"prodfam_name" : $scope.prodfam_name
+			},
+			// url: "http://localhost/hris.online/class/admin/create_category.php"
+			url: 'http://localhost:8080/hris.online.ask/class/model/admin/create_prodfam.php'
+		});
+	}
+
+	factory.updateProdfam = function($scope){
+		return $http({
+			method: 'POST',
+			data: {
+				"prodfam" : $scope.prodfam,
+				"prodfam_name" : $scope.prodfam_name
+			},
+			// url: "http://localhost/hris.online/class/admin/create_category.php"
+			url: 'http://localhost:8080/hris.online.ask/class/model/admin/update_prodfam.php'
+		});
+	}
+
+	factory.deleteProdfam = function(id){
+		return $http({
+			method: 'POST',
+			data: {
+				"prodfam" : id
+			},
+			// url: "http://localhost/hris.online/class/admin/create_category.php"
+			url: 'http://localhost:8080/hris.online.ask/class/model/admin/delete_prodfam.php'
 		});
 	}
 
